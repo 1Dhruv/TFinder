@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* CSS styles remain the same as provided in the original code */
+/* ... */
+</style>
+</head>
+<body>
+
+<h1>CSS Calendar</h1>
+
+<div class="month">      
+  <ul>
+    <li class="prev" onclick="prevMonth()">&#10094;</li>
+    <li class="next" onclick="nextMonth()">&#10095;</li>
+    <li id="currentMonth">
+      August<br>
+      <span style="font-size:18px">2021</span>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <!-- Days of the week -->
+</ul>
+
+<ul class="days">  
+  <!-- Days of the month -->
+</ul>
+
+<script>
+function prevMonth() {
+  // Get the current month and year
+  var currentMonthYear = document.getElementById("currentMonth").innerText.trim().split(" ");
+  var month = currentMonthYear[0];
+//   var year = currentMonthYear[1];
+  
+  // Convert month name to number
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var monthIndex = months.indexOf(month);
+  
+  // Calculate previous month
+  monthIndex--;
+  if (monthIndex < 0) {
+    monthIndex = 11; // December
+    year--;
+  }
+  
+  // Update month and year
+  document.getElementById("currentMonth").innerHTML = months[monthIndex] + "<br><span style='font-size:18px'>" + year + "</span>";
+}
+
+function nextMonth() {
+  // Get the current month and year
+  var currentMonthYear = document.getElementById("currentMonth").innerText.trim().split(" ");
+  var month = currentMonthYear[0];
+  var year = currentMonthYear[1];
+  
+  // Convert month name to number
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var monthIndex = months.indexOf(month);
+  
+  // Calculate next month
+  monthIndex++;
+  if (monthIndex > 11) {
+    monthIndex = 0; // January
+    year++;
+  }
+  
+  // Update month and year
+  document.getElementById("currentMonth").innerHTML = months[monthIndex] + "<br><span style='font-size:18px'>" + year + "</span>";
+}
+</script>
+
+</body>
+</html>
