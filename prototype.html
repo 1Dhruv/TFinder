@@ -15,8 +15,8 @@
     <li class="prev" onclick="prevMonth()">&#10094;</li>
     <li class="next" onclick="nextMonth()">&#10095;</li>
     <li id="currentMonth">
-      August<br>
-      <span style="font-size:18px">2021</span>
+      April<br>
+      <span style="font-size:18px">2024</span>
     </li>
   </ul>
 </div>
@@ -30,47 +30,76 @@
 </ul>
 
 <script>
-function prevMonth() {
-  // Get the current month and year
-  var currentMonthYear = document.getElementById("currentMonth").innerText.trim().split(" ");
-  var month = currentMonthYear[0];
+var year=2024;
+var month=["January","February","March","April","May","June","July","August","September","October","November","December"]
+var months=4;
+function prevMonth()
+{
+  if(months==0)
+  {
+    year=year-1;
+    months=11;
+  }
+  else
+  {
+    months=months-1;
+  }
+  document.getElementById("currentMonth").innerHTML = month[months] + "<br><span style='font-size:18px'>" + year + "</span>";
+}
+function nextMonth()
+{
+  if(months==11)
+  {
+    year=year+1;
+    months=0;
+  }
+  else
+  {
+    months=months+1;
+  }
+  document.getElementById("currentMonth").innerHTML = month[months] + "<br><span style='font-size:18px'>" + year + "</span>";
+}
+// function prevMonth() {
+//   // Get the current month and year
+//   var currentMonthYear = document.getElementById("currentMonth").innerText.trim().split(" ");
+//   var month = currentMonthYear[0];
+// //   var year = currentMonthYear[1];
+  
+//   // Convert month name to number
+//   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+//   var monthIndex = months.indexOf(month);
+  
+//   // Calculate previous month
+//   monthIndex--;
+//   if (monthIndex < 0) {
+//     monthIndex = 11; // December
+//     year--;
+//   }
+  
+//   // Update month and year
+//   document.getElementById("currentMonth").innerHTML = months[monthIndex] + "<br><span style='font-size:18px'>" + year + "</span>";
+// }
+
+// function nextMonth() {
+//   // Get the current month and year
+//   var currentMonthYear = document.getElementById("currentMonth").innerText.trim().split(" ");
+//   var month = currentMonthYear[0];
 //   var year = currentMonthYear[1];
   
-  // Convert month name to number
-  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  var monthIndex = months.indexOf(month);
+//   // Convert month name to number
+//   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+//   var monthIndex = months.indexOf(month);
   
-  // Calculate previous month
-  monthIndex--;
-  if (monthIndex < 0) {
-    monthIndex = 11; // December
-    year--;
-  }
+//   // Calculate next month
+//   monthIndex++;
+//   if (monthIndex > 11) {
+//     monthIndex = 0; // January
+//     year++;
+//   }
   
-  // Update month and year
-  document.getElementById("currentMonth").innerHTML = months[monthIndex] + "<br><span style='font-size:18px'>" + year + "</span>";
-}
-
-function nextMonth() {
-  // Get the current month and year
-  var currentMonthYear = document.getElementById("currentMonth").innerText.trim().split(" ");
-  var month = currentMonthYear[0];
-  var year = currentMonthYear[1];
-  
-  // Convert month name to number
-  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  var monthIndex = months.indexOf(month);
-  
-  // Calculate next month
-  monthIndex++;
-  if (monthIndex > 11) {
-    monthIndex = 0; // January
-    year++;
-  }
-  
-  // Update month and year
-  document.getElementById("currentMonth").innerHTML = months[monthIndex] + "<br><span style='font-size:18px'>" + year + "</span>";
-}
+//   // Update month and year
+//   document.getElementById("currentMonth").innerHTML = months[monthIndex] + "<br><span style='font-size:18px'>" + year + "</span>";
+// }
 </script>
 
 </body>
