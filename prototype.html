@@ -1,106 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-/* CSS styles remain the same as provided in the original code */
-/* ... */
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
 </style>
+
 </head>
 <body>
+<button class="open-button" onclick="openForm()">Open Form</button>
+<div class="form-popup" id="myForm">
+  <form class="form-container">
+    <h1>Login</h1>
 
-<h1>CSS Calendar</h1>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
 
-<div class="month">      
-  <ul>
-    <li class="prev" onclick="prevMonth()">&#10094;</li>
-    <li class="next" onclick="nextMonth()">&#10095;</li>
-    <li id="currentMonth">
-      April<br>
-      <span style="font-size:18px">2024</span>
-    </li>
-  </ul>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn" onclick="closeForm()">Login</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+  
 </div>
 
-<ul class="weekdays">
-  <!-- Days of the week -->
-</ul>
-
-<ul class="days">  
-  <!-- Days of the month -->
-</ul>
+<p id="demo"></p>
 
 <script>
-var year=2024;
-var month=["January","February","March","April","May","June","July","August","September","October","November","December"]
-var months=4;
-function prevMonth()
-{
-  if(months==0)
-  {
-    year=year-1;
-    months=11;
-  }
-  else
-  {
-    months=months-1;
-  }
-  document.getElementById("currentMonth").innerHTML = month[months] + "<br><span style='font-size:18px'>" + year + "</span>";
-}
-function nextMonth()
-{
-  if(months==11)
-  {
-    year=year+1;
-    months=0;
-  }
-  else
-  {
-    months=months+1;
-  }
-  document.getElementById("currentMonth").innerHTML = month[months] + "<br><span style='font-size:18px'>" + year + "</span>";
-}
-// function prevMonth() {
-//   // Get the current month and year
-//   var currentMonthYear = document.getElementById("currentMonth").innerText.trim().split(" ");
-//   var month = currentMonthYear[0];
-// //   var year = currentMonthYear[1];
-  
-//   // Convert month name to number
-//   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-//   var monthIndex = months.indexOf(month);
-  
-//   // Calculate previous month
-//   monthIndex--;
-//   if (monthIndex < 0) {
-//     monthIndex = 11; // December
-//     year--;
-//   }
-  
-//   // Update month and year
-//   document.getElementById("currentMonth").innerHTML = months[monthIndex] + "<br><span style='font-size:18px'>" + year + "</span>";
-// }
 
-// function nextMonth() {
-//   // Get the current month and year
-//   var currentMonthYear = document.getElementById("currentMonth").innerText.trim().split(" ");
-//   var month = currentMonthYear[0];
-//   var year = currentMonthYear[1];
-  
-//   // Convert month name to number
-//   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-//   var monthIndex = months.indexOf(month);
-  
-//   // Calculate next month
-//   monthIndex++;
-//   if (monthIndex > 11) {
-//     monthIndex = 0; // January
-//     year++;
-//   }
-  
-//   // Update month and year
-//   document.getElementById("currentMonth").innerHTML = months[monthIndex] + "<br><span style='font-size:18px'>" + year + "</span>";
-// }
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  console.log("working");
+  var x = document.getElementById("myForm");
+  document.getElementById("demo").innerHTML = x.elements[0].value;
+  console.log(x);
+  // var password = document.getElementById("psw").value;
+  document.getElementById("myForm").style.display = "none";
+}
 </script>
-
 </body>
+<script>
+  console.log("work");
+</script>
 </html>
