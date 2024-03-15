@@ -9,7 +9,7 @@ body {font-family: Verdana, sans-serif;}
 .month {
   padding: 70px 25px;
   width: 100%;
-  background: #1abc9c;
+  background: #b05c50;
   text-align: center;
 }
 
@@ -83,12 +83,20 @@ body {font-family: Verdana, sans-serif;}
 @media screen and (max-width: 290px) {
   .weekdays li, .days li {width: 12.2%;}
 }
+
 </style>
 </head>
 <script>
-  var year=2024;
+  var year;
   var month=["January","February","March","April","May","June","July","August","September","October","November","December"]
-  var months=4;
+  var months;
+  function setupCal()
+  {
+    const mon=new Date();
+    months=mon.getMonth();
+    year=mon.getFullYear();
+    document.getElementById("currentMonth").innerHTML = month[months] + "<br><span style='font-size:18px'>" + year + "</span>";
+  }
   function prevMonth()
   {
     if(months==0)
@@ -100,7 +108,9 @@ body {font-family: Verdana, sans-serif;}
     {
       months=months-1;
     }
-    document.getElementById("currentMonth").innerHTML = month[months] + "<br><span style='font-size:18px'>" + year + "</span>";
+    document.getElementById("currentMonth").innerHTML = month[months] + "<br><span style='font-size:18px'>" + year+"</span>";
+    clearGrid();
+    addGrid();
   }
   function nextMonth()
   {
@@ -114,21 +124,71 @@ body {font-family: Verdana, sans-serif;}
       months=months+1;
     }
     document.getElementById("currentMonth").innerHTML = month[months] + "<br><span style='font-size:18px'>" + year + "</span>";
+    clearGrid()
+    addGrid();
   }
-  </script>
+  function getDaysInMonth()
+  {
+    return new Date(year, months+1,0).getDate();
+  }
+  function findDay()
+  {
+      const day1=new Date(month[months]+" 1,"+year);
+      var day=day1.getDay();
+      return day;
+  }
+  function clearGrid()
+  {
+    for (let i = 0; i < 38; i++)
+      {
+        document.getElementById(i).innerHTML=" ";
+        
+      }
+  }
+  function addGrid()
+  {
+    day=findDay();
+    var daynum=1;
+    var month_length=getDaysInMonth();
+    for (let i = day; i < month_length+day; i++)
+      {
+        document.getElementById(i).innerHTML=daynum;
+        daynum++;
+        
+      }
+  }
+  function findTime()
+  {
+    
+  }
+</script>
+
+
 <body>
 
-<h1>CSS Calendar</h1>
+<h1>TFinder</h1>
+<h1>
+  <body>
+    
+    <button type="button" onclick="alert('Hacking in Progress')">Find time</button>
+    <button type="button" onclick="alert('Hacking in Progress')">Click Me!</button>
+     
+  </body>
+</h1>
 
-<div class="month">      
+
+<div class="month">     
   <ul>
     <li class="prev" onclick="prevMonth()">&#10094;</li>
     <li class="next" onclick="nextMonth()">&#10095;</li>
     <li id="currentMonth">
-      April <br>
-      <span style="font-size:18px">2024</span>
+      <!-- April <br>
+      <span style="font-size:18px">2024</span> -->
     </li>
   </ul>
+  <script>
+    window.onload=setupCal();
+  </script> 
 </div>
 
 <ul class="weekdays">
@@ -141,38 +201,48 @@ body {font-family: Verdana, sans-serif;}
   <li>Sa</li>
 </ul>
 
-<ul class="days">  
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>4</li>
-  <li>5</li>
-  <li>6</li>
-  <li>7</li>
-  <li>8</li>
-  <li>9</li>
-  <li><span class="active">10</span></li>
-  <li>11</li>
-  <li>12</li>
-  <li>13</li>
-  <li>14</li>
-  <li>15</li>
-  <li>16</li>
-  <li>17</li>
-  <li>18</li>
-  <li>19</li>
-  <li>20</li>
-  <li>21</li>
-  <li>22</li>
-  <li>23</li>
-  <li>24</li>
-  <li>25</li>
-  <li>26</li>
-  <li>27</li>
-  <li>28</li>
-  <li>29</li>
-  <li>30</li>
-  <li>31</li>
+<ul class="days">
+  <li id="0"></li>
+  <li id="1"></li>
+  <li id="2"></li>
+  <li id="3"></li>
+  <li id="4"></li>
+  <li id="5"></li>
+  <li id="6"></li>
+  <li id="7"></li>
+  <li id="8"></li>
+  <li id="9"></li>
+  <li id="10"></li>
+  <li id="11"></li>
+  <li id="12"></li>
+  <li id="13"></li>
+  <li id="14"></li>
+  <li id="15"></li>
+  <li id="16"></li>
+  <li id="17"></li>
+  <li id="18"></li>
+  <li id="19"></li>
+  <li id="20"></li>
+  <li id="21"></li>
+  <li id="22"></li>
+  <li id="23"></li>
+  <li id="24"></li>
+  <li id="25"></li>
+  <li id="26"></li>
+  <li id="27"></li>
+  <li id="28"></li>
+  <li id="29"></li>
+  <li id="30"></li>
+  <li id="31"></li>
+  <li id="32"></li>
+  <li id="33"></li>
+  <li id="34"></li>
+  <li id="35"></li>
+  <li id="36"></li>
+  <li id="37"></li>
+  <script>
+    window.onload=addGrid();
+  </script>
 </ul>
 
 </body>
