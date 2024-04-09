@@ -1,4 +1,4 @@
->My goal is to take the input from the form and make it get displayed on the actual website and make the sign in a appleasing button
+My goal is to take the input from the form and make it get displayed on the actual website and make the sign in a appleasing button
 https://www.w3schools.com/howto/howto_js_popup_form.asp-forms
 https://www.w3schools.com/howto/howto_css_calendar.asp-calendar
 Chat GBT was also used to help better understand code
